@@ -1,3 +1,18 @@
+h1{
+  text-align: center;
+}
 .completada {
   text-decoration: line-through;
+  color: greenyellow;
+}
+
+ul{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.boton-eliminar{
+  color: red;
+  margin-left: 100px;
 }

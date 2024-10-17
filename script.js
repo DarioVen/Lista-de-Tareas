@@ -34,28 +34,32 @@ function renderizarTareas() {
       li.classList.add('completada');
     }
     li.onclick = () => marcarCompletada(index);
+    listaTareas.appendChild(li);
     // Crear un botón de eliminar
     const botonEliminar = document.createElement('button');
     botonEliminar.textContent = 'Eliminar';
     botonEliminar.classList.add('boton-eliminar');
     botonEliminar.onclick = () => eliminarTarea(index);
     li.appendChild(botonEliminar);
-    listaTareas.appendChild(li);
   });
 }
 
 // Función para marcar una tarea como completada
 function marcarCompletada(index) {
-  tareas[index].completada = !tareas[index].completada;
+  if (index >= 0 && index < tareas.length) {
+    tareas[index].completada = !tareas[index].completada;
+  tareas[index].completada = !tareas[index].completada;}
   guardarTareas();
   renderizarTareas();
 }
 
 // Función para eliminar una tarea
 function eliminarTarea(index) {
-  tareas.splice(index, 1); // Elimina el elemento en el índice especificado
-  guardarTareas();
-  renderizarTareas(); // Vuelve a renderizar la lista para reflejar los cambios
+  if (confirm("¿Estás seguro de que quieres eliminar esta tarea?")) {
+    tareas.splice(index, 1);
+    guardarTareas();
+    renderizarTareas();
+  }
 }
 
 // Renderizar las tareas al cargar la página
